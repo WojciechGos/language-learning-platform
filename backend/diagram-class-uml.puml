@@ -1,0 +1,27 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+class Course {
+  -id: int
+  -name: string
+  -description: string
+  -price: double
+  -start_date: date
+  -end_date: date
+  -status: string
+  -created_at: date
+  -updated_at: date
+}
+
+class User {
+  -id: int
+  -name: string
+  -email: string
+  -password: string
+  -created_at: date
+  -updated_at: date
+}
+
+
+
+@enduml
