@@ -1,0 +1,17 @@
+.group-tile {
+  width: 15vw;
+  height: 25vh;
+  margin: 20px;
+  padding: 5px;
+  background-color: #ffbe76;
+  border-radius: 30px;
+}
+
+.group-level {
+  padding: 10px;
+}
+
+.bigText {
+  font-size: 2.4em;
+  font-weight: bold;
+}
