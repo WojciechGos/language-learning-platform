@@ -1,0 +1,53 @@
+.navigation {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  padding: 10px;
+  transition: width 0.3s ease;
+}
+
+.menu {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  display: none;
+}
+
+.menu li {
+  padding: 20px;
+}
+
+.menu li:first-child {
+  padding-top: 40px;
+}
+
+.navigation.open .menu {
+  display: block;
+  background-color: #e15f41;
+  width: 12vw;
+  min-width: 120px;
+  height: 90vh;
+  border-radius: 30px;
+}
+
+.navigation.open .menu a {
+  color: white;
+  text-decoration: none;
+  font-size: 24;
+}
+
+.toggle-button {
+  background-color: transparent;
+  border: none;
+  color: #000;
+  font-size: 30px;
+  cursor: pointer;
+}
+
+.active-link {
+  background-color: white;
+  padding: 15px;
+  border-radius: 30px;
+  color: black !important;
+}
