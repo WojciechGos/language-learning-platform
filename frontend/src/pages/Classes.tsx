@@ -9,7 +9,14 @@ const Classes: React.FC = () => {
       <Navigation />
       <h1>Lekcje</h1>
       <div style={{ display: "flex", flexDirection: "row" }}>
-        <MessageBoard />
+        <MessageBoard
+          name="Najnowsze lekcje"
+          messages={[
+            "Present Perfect",
+            "Our body - vocabulary",
+            "First conditional",
+          ]}
+        />
         <GroupTile name="Twój poziom" level={"B1"} />
       </div>
     </div>

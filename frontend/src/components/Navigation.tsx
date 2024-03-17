@@ -76,7 +76,7 @@ const Navigation: React.FC = () => {
           </NavLink>
         </li>
         <li>
-          <text style={{ color: "white" }}>__________</text>
+          <p style={{ color: "white" }}>__________</p>
         </li>
         <li>
           <NavLink

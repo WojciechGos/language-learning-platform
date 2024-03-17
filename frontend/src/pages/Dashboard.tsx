@@ -7,7 +7,14 @@ const Dashboard: React.FC = () => {
     <div>
       <Navigation />
       <h1>Podsumowanie</h1>
-      <MessageBoard />
+      <MessageBoard
+        name="Najnowsze wiadomości"
+        messages={[
+          "Za swoją aktywność otrzymałeś dodatkowe 4 punkty!",
+          "Dodano nowe lekcje powtórzeniowe, sprawdź je teraz!",
+          "Zostałeś przypisany do poziomu B1.",
+        ]}
+      />
     </div>
   );
 };

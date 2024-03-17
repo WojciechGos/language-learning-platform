@@ -11,7 +11,7 @@ const GroupTile: React.FC<GroupTileProps> = ({ name, level }) => {
     <div className="group-tile">
       <h2>{name}</h2>
       <div className="group-level">
-        <text className="bigText">{level}</text>
+        <p className="bigText">{level}</p>
       </div>
     </div>
   );
