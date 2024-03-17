@@ -1,4 +1,4 @@
-package platform.backend.Work.Lesson;
+package platform.backend.Work.Option;
 
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -9,19 +9,17 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-public class Lesson {
+public class Option {
     @SequenceGenerator(
-            name = "lesson_sequence",
-            sequenceName = "lesson_sequence",
+            name = "option_sequence",
+            sequenceName = "option_sequence",
             allocationSize = 1
     )
     @Id
     @GeneratedValue(
             strategy = GenerationType.SEQUENCE,
-            generator = "lesson_sequence"
+            generator = "option_sequence"
     )
     private Long id;
-    private String name;
-    private String description;
-//    private List<> taskList
+    private String content;
 }

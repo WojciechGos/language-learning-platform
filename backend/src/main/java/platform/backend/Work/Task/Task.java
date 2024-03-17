@@ -9,6 +9,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import platform.backend.Work.Excercise.Excercise;
 import platform.backend.Work.Excercise.ExcerciseFactory;
+import platform.backend.Work.Option.Option;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,4 +35,6 @@ public class Task {
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "task_id")
     private List<Excercise> excerciseList;
+    @OneToMany
+    private List<Option> optionList;
 }
