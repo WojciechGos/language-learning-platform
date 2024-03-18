@@ -1,7 +1,7 @@
 package platform.backend.Work.Excercise;
 
 public class ExcerciseFactory {
-    public static Excercise createExcercise(String type, String content) {
+    public static Exercise createExcercise(String type, String content) {
         switch (type) {
             case "code_snippet":
 //                return new CodeSnippet(content);

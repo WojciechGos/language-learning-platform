@@ -10,4 +10,15 @@ import lombok.Setter;
 @Setter
 @Entity
 public class Course {
+    @SequenceGenerator(
+            name = "course_sequence",
+            sequenceName = "course_sequence",
+            allocationSize = 1
+    )
+    @Id
+    @GeneratedValue(
+            strategy = GenerationType.SEQUENCE,
+            generator = "course_sequence"
+    )
+    private Long id;
 }

@@ -3,14 +3,15 @@ package platform.backend.claudeIntegration;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
 
 @Service
 public class ClaudeService {
@@ -34,8 +35,8 @@ public class ClaudeService {
         this.mapper = mapper;
     }
 
-    public String getClaudeResponse(String prompt, String model) {
-        return getClaudeResponse("", prompt, model, DEFAULT_TEMPERATURE);
+    public String getClaudeResponse(String prompt) {
+        return getClaudeResponse("", prompt, CLAUDE_3_OPUS, DEFAULT_TEMPERATURE);
     }
 
     public String getClaudeResponse(String system, String prompt,
@@ -46,13 +47,14 @@ public class ClaudeService {
                 MAX_TOKENS_TO_SAMPLE,
                 temperature);
         ClaudeResponse response = claudeInterface.getCompletion(request);
-        logger.debug(response.toString());
+        System.out.println(response.toString());
+//        logger.debug(response.toString());
         return response.completion();
     }
 
-    public ClaudeMessageResponse getClaudeMessageResponse(String prompt, String model) {
+    public ClaudeMessageResponse getClaudeMessageResponse(String prompt) {
         ClaudeMessageRequest request = new ClaudeMessageRequest(
-                model,
+                CLAUDE_3_OPUS,
                 "",
                 MAX_TOKENS_TO_SAMPLE,
                 DEFAULT_TEMPERATURE,

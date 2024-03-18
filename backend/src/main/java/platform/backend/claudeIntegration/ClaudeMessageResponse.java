@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.List;
 
-record ClaudeMessageResponse(String id,
+public record ClaudeMessageResponse(String id,
                                     String type,
                                     String role,
                                     String model,

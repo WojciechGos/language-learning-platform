@@ -4,11 +4,11 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import platform.backend.Work.Excercise.Excercise;
+import platform.backend.Work.Excercise.Exercise;
 
 @NoArgsConstructor
 @Getter
 @Setter
 @Entity
-public class FillBlanksExcercise extends Excercise {
+public class TrueFalseExercise extends Exercise {
 }
