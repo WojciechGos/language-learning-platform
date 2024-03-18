@@ -8,7 +8,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import platform.backend.Work.Excercise.Exercise;
-import platform.backend.Work.Option.Option;
 
 import java.util.List;
 
@@ -30,15 +29,11 @@ public class Task {
     private Long id;
     private String description;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "task")
+    @OneToMany(cascade = CascadeType.ALL)
     private List<Exercise> excerciseList;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "task")
-    private List<Option> optionList;
-
-    public Task(String description, List<Exercise> excerciseList, List<Option> optionList) {
+    public Task(String description, List<Exercise> excerciseList) {
         this.description = description;
         this.excerciseList = excerciseList;
-        this.optionList = optionList;
     }
 }

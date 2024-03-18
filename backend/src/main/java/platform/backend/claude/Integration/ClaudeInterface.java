@@ -1,7 +1,5 @@
-package platform.backend.claudeIntegration;
+package platform.backend.claude.Integration;
 
-import org.springframework.context.annotation.Bean;
-import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.service.annotation.HttpExchange;
 import org.springframework.web.service.annotation.PostExchange;

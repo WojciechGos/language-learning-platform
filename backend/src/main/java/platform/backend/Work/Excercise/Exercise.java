@@ -5,32 +5,37 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import platform.backend.Work.Option.Option;
-import platform.backend.Work.Task.Task;
 
 @NoArgsConstructor
 @Getter
 @Setter
 @Entity
-@Inheritance(strategy = InheritanceType.JOINED )
-public abstract class Exercise {
+public class Exercise {
+    @SequenceGenerator(
+            name = "exercise_sequence",
+            sequenceName = "exercise_sequence",
+            allocationSize = 1
+    )
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(
+            strategy = GenerationType.SEQUENCE,
+            generator = "exercise_sequence"
+    )
     private Long id;
     private int points = 1;
     private String content;
+    private String userAnswer;
+    private String correctAnswer;
 
-    @OneToOne
-    private Option answer;
 
+//    @ManyToOne
+//    @JoinColumn(name = "task_id")
+//    private Task task;
 
-    @ManyToOne
-    @JoinColumn(name = "task_id")
-    private Task task;
-
-    public Exercise(String content, Option answer) {
+    public Exercise(String content, String correctAnswer) {
         this.content = content;
-        this.answer = answer;
+        this.correctAnswer = correctAnswer;
+
     }
 
 }

@@ -13,4 +13,8 @@ public class ExerciseService {
         return exerciseRepository.save(exercise);
     }
 
+    public Exercise generateExercise() {
+        return new Exercise();
+    }
+
 }

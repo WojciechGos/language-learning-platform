@@ -1,4 +1,4 @@
-package platform.backend.claudeIntegration;
+package platform.backend.claude.Integration;
 
 import com.fasterxml.jackson.databind.PropertyNamingStrategies;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;

@@ -1,4 +1,4 @@
-package platform.backend.claudeIntegration;
+package platform.backend.claude.Integration;
 
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
