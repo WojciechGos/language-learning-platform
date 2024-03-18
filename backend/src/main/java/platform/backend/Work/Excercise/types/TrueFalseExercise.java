@@ -11,4 +11,6 @@ import platform.backend.Work.Excercise.Exercise;
 @Setter
 @Entity
 public class TrueFalseExercise extends Exercise {
+    private String content;
+    private boolean answer;
 }

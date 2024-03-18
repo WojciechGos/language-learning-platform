@@ -30,9 +30,15 @@ public class Task {
     private Long id;
     private String description;
 
-    @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "task_id")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "task")
     private List<Exercise> excerciseList;
-    @OneToMany
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "task")
     private List<Option> optionList;
+
+    public Task(String description, List<Exercise> excerciseList, List<Option> optionList) {
+        this.description = description;
+        this.excerciseList = excerciseList;
+        this.optionList = optionList;
+    }
 }
