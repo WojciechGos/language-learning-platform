@@ -4,6 +4,9 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import platform.backend.Work.Task.Task;
+
+import java.util.List;
 
 @NoArgsConstructor
 @Getter
@@ -23,5 +26,6 @@ public class Lesson {
     private Long id;
     private String name;
     private String description;
-//    private List<> taskList
+    @OneToMany
+    private List<Task> taskList;
 }
