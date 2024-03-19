@@ -1,0 +1,20 @@
+<result>
+    <exercises>
+        <exercise>
+            <content>NASA technologia opracowana dla programów kosmicznych znalazła wiele zastosowań w życiu codziennym, na przykład {{BLANK}} używane w materacach pochodzą z technologii siedzeń wahadłowców.</content>
+            <answer>memory foam</answer>
+        </exercise>
+        <exercise>
+            <content>Okulary {{BLANK}} blokujące odblaski światła zostały pierwotnie opracowane dla astronautów.</content>
+            <answer>polarized</answer>
+        </exercise>
+        <exercise>
+            <content>Bezprzewodowe {{BLANK}} do pomiaru temperatury ciała u niemowląt wywodzą się z czujników używanych przez NASA do monitorowania temperatury astronautów.</content>
+            <answer>thermometers</answer>
+        </exercise>
+        <exercise>
+            <content>Technologia filtrowania wody NASA przyczyniła się do rozwoju przenośnych systemów {{BLANK}} wody pitnej.</content>
+            <answer>purification</answer>
+        </exercise>
+    </exercises>
+</result>

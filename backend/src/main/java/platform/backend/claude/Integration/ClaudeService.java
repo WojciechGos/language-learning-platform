@@ -51,13 +51,13 @@ public class ClaudeService {
         return response.completion();
     }
 
-    public ClaudeMessageResponse getClaudeMessageResponse(String prompt) {
+    public ClaudeMessageResponse getClaudeMessageResponse(String systemPrompt, String userPrompt) {
         ClaudeMessageRequest request = new ClaudeMessageRequest(
                 CLAUDE_3_OPUS,
-                "",
+                systemPrompt,
                 MAX_TOKENS_TO_SAMPLE,
                 DEFAULT_TEMPERATURE,
-                List.of(new ClaudeMessageRequest.Message("user", prompt))
+                List.of(new ClaudeMessageRequest.Message("user", userPrompt))
         );
         return claudeInterface.getMessageResponse(request);
     }

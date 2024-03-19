@@ -17,12 +17,19 @@ public class Parameter {
         this.value = value;
     }
 
-    public String getXML(){
+    public String getSystemPrompt(){
         StringBuilder xml = new StringBuilder();
         xml.append("<parameter>");
         xml.append("<name>").append(name).append("</name>");
         xml.append("<type>").append(type).append("</type>");
         xml.append("<description>").append(description).append("</description>");
+        xml.append("</parameter>");
+        return xml.toString();
+    }
+    public String getUserPrompt(int index){
+        StringBuilder xml = new StringBuilder();
+        xml.append("<parameter>");
+        xml.append("<param").append(index).append(">").append(value).append("</param").append(index).append(">");
         xml.append("</parameter>");
         return xml.toString();
     }

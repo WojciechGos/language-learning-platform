@@ -2,33 +2,33 @@ package platform.backend.claude.functions.skeleton;
 
 import java.util.List;
 
-public class ClaudeFunction {
+public class ClaudeFunctionPrompt {
     private String toolName;
     private String description;
     private List<Parameter> parameters;
     private String response;
-
-
-
-    public ClaudeFunction(String toolName, String description, List<Parameter> parameters, String response) {
+    public ClaudeFunctionPrompt(String toolName, String description, List<Parameter> parameters) {
         this.toolName = toolName;
         this.description = description;
         this.parameters = parameters;
-        this.response = response;
     }
 
-    public String getXML(){
+    public String getFunctionPrompt(){
         StringBuilder xml = new StringBuilder();
         xml.append("<tool_description>");
         xml.append("<tool_name>").append(toolName).append("</tool_name>");
         xml.append("<description>").append(description).append("</description>");
         xml.append("<parameters>");
         for (Parameter parameter : parameters) {
-            xml.append(parameter.getXML());
+            xml.append(parameter.getSystemPrompt());
         }
         xml.append("</parameters>");
         xml.append("</tool_description>");
 
+        return xml.toString();
+    }
+    public String getUserPrompt(){
+        StringBuilder xml = new StringBuilder();
         xml.append("<function_call>");
         xml.append("<invoke>");
         xml.append("<tool_name>").append(toolName).append("</tool_name>");
@@ -44,8 +44,6 @@ public class ClaudeFunction {
         xml.append("</invoke>");
         xml.append("</function_call>");
 
-
-        xml.append(response);
         return xml.toString();
     }
 }
