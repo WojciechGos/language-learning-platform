@@ -1,0 +1,45 @@
+Follow intstructions and answer only using given and defined xml tags.
+
+<tool_description>
+    <tool_name>generate_exercise</tool_name>
+    <description> Generates exercises for english lessons on the given topic. 
+        This is translate exercise. Generate polish sentences to the {{CONTENT}} and sentence english words to the {{ANSWER}}.
+        In the given structure:
+        <result>
+            <exercises>
+                <exercise>
+                    <content>{{CONTENT}}</content>
+                    <answer>{{ANSWER}}</answer>
+                </exercise>
+            </exercises>
+        </result>
+        In the <exercises></exercises> tag returns a list of objects wih 2 fields CONTENT and ANSWER. Create exercise that way
+        where all answers are different. Please take into account level of language that is given as
+        a parameter.
+        - content: string, Only one sentence of exercise - answer: string, a correct answer for the exercise
+     </description>
+    <parameters>
+        <parameter>
+            <name>topic</name>
+            <type>string</type>
+            <description>The main theme for exercise e.g. Nasa's spin offs, IT procedures</description>
+        </parameter>
+        <parameter>
+            <name>level</name>
+            <type>string</type>
+            <description>It is language level e.g. B1, B2, C2</description>
+        </parameter>
+    </parameters>
+</tool_description>
+invoke generate_exercise
+
+<function_calls>
+    <invoke>
+        <tool_name>generate_exercise</tool_name>
+        <parameters>
+            <param1>nasa's
+                spin offs</param1>
+            <param2>B2</param2>
+        </parameters>
+    </invoke>
+</function_calls>

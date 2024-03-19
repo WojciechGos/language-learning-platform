@@ -1,0 +1,38 @@
+Please do not tell more than is necessary
+
+<tool_description>
+    <tool_name>generate_exercise</tool_name>
+    <description>
+        Generates exercises for english lessons.
+        Returns a object wih 2 fields
+        - content: string, Only one sentence of exercise
+        - correct_answer: string, a correct answer for the exercise
+    </description>
+    <parameters>
+        <parameter>
+            <name>topic</name>
+            <type>string</type>
+            <description>The main theme for exercise e.g. Nasa's spin offs, IT procedures</description>
+        </parameter>
+        <parameter>
+            <name>type</name>
+            <type>string</type>
+            <description>The exercise type e.g. grammar, fill the blanks</description>
+        </parameter>
+    </parameters>
+</tool_description>
+this is response format
+<result>
+    <content>{{CONTENT}}</content>
+    <correct_answer>{{CORRECT_ANSWER}}</correct_answer>
+</result>
+invoke generate_exercise
+<function_calls>
+    <invoke>
+        <tool_name>generate_exercise</tool_name>
+        <parameters>
+            <param1>nasa's spin offs</param1>
+            <param2>fill the blanks</param2>
+        </parameters>
+    </invoke>
+</function_calls>
