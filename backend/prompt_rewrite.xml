@@ -1,33 +1,24 @@
-Here is the generated exercise for the topic "procedures in IT" at the B2 level:
-
+<tool_description>
+    <tool_name>generate_exercise</tool_name>
+    <description>
+        Generates exercises for english lessons.
+        Returns a object wih 2 fields
+        - content: string, word scatters with a polish translations, for example: OGD (pies)
+        - correct_answer: string, a correct answer for the exercise, for example: DOG
+    </description>
+    <parameters>
+        <parameter>
+            <name>topic</name>
+            <type>string</type>
+            <description>The main theme for exercise e.g. food vocabulary, names of jobs</description>
+        </parameter>
+    </parameters>
+</tool_description>
+        this is response format
 <result>
-    <exercises>
-        <exercise>
-            <content>The software development process involves many steps, including planning,
-                coding, and testing (whereas)</content>
-            <answer>The software development process involves many steps, whereas other IT
-                procedures may be simpler.</answer>
-        </exercise>
-        <exercise>
-            <content>Troubleshooting a network issue requires following a logical procedure
-                (nevertheless)</content>
-            <answer>Troubleshooting a network issue requires following a logical procedure,
-                nevertheless it can still be challenging to identify the root cause.</answer>
-        </exercise>
-        <exercise>
-            <content>Data backup is a critical IT procedure (but)</content>
-            <answer>Data backup is a critical IT procedure, but it is often overlooked until data
-                loss occurs.</answer>
-        </exercise>
-        <exercise>
-            <content>Installing new hardware components involves several steps (whereas)</content>
-            <answer>Installing new hardware components involves several steps, whereas software
-                installation is usually more straightforward.</answer>
-        </exercise>
-        <exercise>
-            <content>Implementing security measures is an ongoing process in IT (nevertheless)</content>
-            <answer>Implementing security measures is an ongoing process in IT, nevertheless many
-                organizations still fall victim to cyber attacks.</answer>
-        </exercise>
-    </exercises>
+<content>{{CONTENT}}</content>
+<correct_answer>{{CORRECT_ANSWER}}</correct_answer>
 </result>
+
+        In the result, don't include first message with "Here is the result of...", generate only the exercise.
+

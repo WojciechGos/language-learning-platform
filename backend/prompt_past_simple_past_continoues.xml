@@ -7,7 +7,8 @@ Follow intstructions and answer only using given and defined xml tags.
         brackets next to the blank spot verb. In the given structure. In the <exercises></exercises>
         tag returns a list of objects wih 2 fields CONTENT and ANSWER. Create exercise that way
         where all answers are different. Please take into account level of language that is given as
-        a parameter. <result>
+        a parameter. 
+        <result>
             <exercises>
                 <exercise>
                     <content>{{CONTENT}}</content>
@@ -30,8 +31,9 @@ Follow intstructions and answer only using given and defined xml tags.
         </parameter>
     </parameters>
 </tool_description>
-invoke generate_exercise
 
+
+invoke generate_exercise
 <function_calls>
     <invoke>
         <tool_name>generate_exercise</tool_name>
