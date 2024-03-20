@@ -31,8 +31,8 @@ Follow intstructions and answer only using given and defined xml tags.
         </parameter>
     </parameters>
 </tool_description>
-invoke generate_exercise
 
+invoke generate_exercise
 <function_calls>
     <invoke>
         <tool_name>generate_exercise</tool_name>

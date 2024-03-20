@@ -1,4 +1,4 @@
-package platform.backend.claude.functions.definition;
+package platform.backend.claude.functions.definition.exercise;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;

@@ -3,7 +3,7 @@ package platform.backend.Work.Excercise;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.ResourceAccessException;
-import platform.backend.claude.functions.definition.ClaudeExerciseResponse;
+import platform.backend.claude.functions.definition.exercise.ClaudeExerciseResponse;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,9 +31,15 @@ public class ExerciseService {
     }
 
     public Exercise updateExercise(ExerciseRequest exerciseRequest, Long exerciseId) {
+
+
         Exercise exercise = exerciseRepository.findById(exerciseId).orElseThrow(() -> new ResourceAccessException("Exercise with id [%s] not found".formatted(exerciseId)));
 
         exercise.setUserAnswer(exerciseRequest.userAnswer());
+
+        if(exercise.getUserAnswer().equals(exercise.getCorrectAnswer())){
+            exercise.setPoints(1);
+        }
 
         return exerciseRepository.save(exercise);
     }

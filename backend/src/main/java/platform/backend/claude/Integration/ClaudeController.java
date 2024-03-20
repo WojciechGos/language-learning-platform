@@ -3,10 +3,9 @@ package platform.backend.claude.Integration;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import platform.backend.claude.functions.definition.AntonymExercise;
-import platform.backend.claude.functions.definition.ClaudeExerciseResponse;
-import platform.backend.claude.functions.definition.ExerciseDefinition;
-import platform.backend.claude.functions.definition.PastSPastCExercise;
+import platform.backend.claude.functions.definition.exercise.AntonymExercise;
+import platform.backend.claude.functions.definition.exercise.ClaudeExerciseResponse;
+import platform.backend.claude.functions.definition.exercise.ExerciseDefinition;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -28,12 +28,28 @@ public class Task {
     )
     private Long id;
     private String description;
-
+    private String type;
     @OneToMany(cascade = CascadeType.ALL)
     private List<Exercise> excerciseList;
+
 
     public Task(String description, List<Exercise> excerciseList) {
         this.description = description;
         this.excerciseList = excerciseList;
+    }
+
+    public Task(String description, String type, List<Exercise> excerciseList) {
+        this.description = description;
+        this.type = type;
+        this.excerciseList = excerciseList;
+    }
+
+    @Override
+    public String toString() {
+        return "<task>" +
+                "<type>" + type + "</type>" +
+                "<description>" + description + "</description>"+
+                "<excerciseList>" + excerciseList + "</exerciseList>" +
+                "</task>";
     }
 }

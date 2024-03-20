@@ -59,6 +59,7 @@ public class ClaudeService {
                 DEFAULT_TEMPERATURE,
                 List.of(new ClaudeMessageRequest.Message("user", userPrompt))
         );
+        System.out.println(request.toString());
         return claudeInterface.getMessageResponse(request);
     }
 

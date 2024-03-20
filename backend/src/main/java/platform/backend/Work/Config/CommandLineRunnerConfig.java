@@ -47,6 +47,7 @@ public class CommandLineRunnerConfig {
 
         Task grammarTask = new Task(
                 "Join these pairs of sentences into single sentences, using a present participle phrase (verb+ing). Some sentences require the additional word in brackets to be used.",
+                "grammar",
                 grammarExercisesList1
         );
         taskRepository.saveAll(List.of(grammarTask));
@@ -73,14 +74,18 @@ public class CommandLineRunnerConfig {
 
         Task pastSimplePastContinuousTask = new Task(
                 "Write the word in parentheses in the appropriate simple past or past continuous tense.",
+                "past simple past continuous",
                 pastSpastCExercisesList1
         );
 
         taskRepository.save(pastSimplePastContinuousTask);
         exerciseRepository.saveAll(pastSpastCExercisesList1);
 
-        Lesson lesson = new Lesson("spin offs", "spin offs", List.of(grammarTask));
+        Lesson lesson = new Lesson("spin offs", List.of(grammarTask, pastSimplePastContinuousTask),4,7);
         lessonRepository.save(lesson);
+
+
+
 
     }
 }

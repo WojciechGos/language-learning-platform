@@ -6,12 +6,8 @@ import platform.backend.Work.Excercise.Exercise;
 import platform.backend.Work.Excercise.ExerciseService;
 import platform.backend.Work.Lesson.LessonService;
 import platform.backend.claude.Integration.ClaudeMessageResponse;
-import platform.backend.claude.Integration.ClaudeResponse;
 import platform.backend.claude.Integration.ClaudeService;
-import platform.backend.claude.functions.definition.AntonymExercise;
-import platform.backend.claude.functions.definition.ClaudeExerciseResponse;
-import platform.backend.claude.functions.definition.ExerciseDefinition;
-import platform.backend.claude.functions.definition.PastSPastCExercise;
+import platform.backend.claude.functions.definition.exercise.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -53,9 +49,20 @@ public class TaskService {
             System.out.println(claudeMessageResponse);
             claudeExerciseResponsesList = pastSimplePastContinuousExercise.getResponseData(claudeMessageResponse.content().get(0).text());
         }
+        else if(request.type().equals("scatter")){
+            ExerciseDefinition scatterExercise = new ScatterExercise(request.topic());
+            description = "form words from scattered letters.";
+            ClaudeMessageResponse claudeMessageResponse = claudeService.getClaudeMessageResponse(
+                    scatterExercise.getSystemPrompt(),
+                    scatterExercise.getUserPrompt()
+            );
+
+            System.out.println(claudeMessageResponse);
+            claudeExerciseResponsesList = scatterExercise.getResponseData(claudeMessageResponse.content().get(0).text());
+        }
 
         List<Exercise> exerciseList = exerciseService.getExerciseList(claudeExerciseResponsesList);
-        Task task = taskRepository.save(new Task(description, exerciseList));
+        Task task = taskRepository.save(new Task(description, request.type(), exerciseList));
 
         lessonService.addTaskToLesson(task, request.lessonId());
         return task;
