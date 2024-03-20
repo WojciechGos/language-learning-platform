@@ -1,20 +1,41 @@
-<result>
-    <exercises>
-        <exercise>
-            <content>NASA technologia opracowana dla programów kosmicznych znalazła wiele zastosowań w życiu codziennym, na przykład {{BLANK}} używane w materacach pochodzą z technologii siedzeń wahadłowców.</content>
-            <answer>memory foam</answer>
-        </exercise>
-        <exercise>
-            <content>Okulary {{BLANK}} blokujące odblaski światła zostały pierwotnie opracowane dla astronautów.</content>
-            <answer>polarized</answer>
-        </exercise>
-        <exercise>
-            <content>Bezprzewodowe {{BLANK}} do pomiaru temperatury ciała u niemowląt wywodzą się z czujników używanych przez NASA do monitorowania temperatury astronautów.</content>
-            <answer>thermometers</answer>
-        </exercise>
-        <exercise>
-            <content>Technologia filtrowania wody NASA przyczyniła się do rozwoju przenośnych systemów {{BLANK}} wody pitnej.</content>
-            <answer>purification</answer>
-        </exercise>
-    </exercises>
-</result>
+<tool_description>
+    <tool_name>generate_exercise</tool_name>
+    <description>Generates exercises for english lessons on the given topic. This is grammar
+        exercise, that helps us to learn past simple and past continoues, so please give in the
+        brackets next to the blank spot verb. In the given structure. In the <exercises></exercises>
+        tag returns a list of objects wih 2 fields CONTENT and ANSWER. Create exercise that way
+        where all answers are different. Please take into account level of language that is given as
+        a parameter. <result>
+            <exercises>
+                <exercise>
+                    <content>{{CONTENT}}</content>
+                    <answer>{{ANSWER}}</answer>
+                </exercise>
+            </exercises>
+        </result>
+        - content: string, Only one sentence of exercise - correct_answer: string, a correct answer
+        for the exercise </description>
+    <parameters>
+        <parameter>
+            <name>topic</name>
+            <type>string</type>
+            <description>The main theme for exercise e.g. Nasa's spin offs, IT procedures</description>
+        </parameter>
+        <parameter>
+            <name>level</name>
+            <type>string</type>
+            <description>It is language level e.g. B1, B2, C2</description>
+        </parameter>
+    </parameters>
+</tool_description>In
+the result, don't include first message with "Here is the result of...", generate only the exercise.
+invoke generate_exercise
+<function_call>
+    <invoke>
+        <tool_name>generate_exercise</tool_name>
+        <parameters>
+            <param1>past simple past Continuous</param1>
+            <param2>B2</param2>
+        </parameters>
+    </invoke>
+</function_call>

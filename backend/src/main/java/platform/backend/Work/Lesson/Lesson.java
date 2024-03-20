@@ -34,7 +34,10 @@ public class Lesson {
 
     public Lesson(String name, String description, List<Task> taskList) {
         this.name = name;
-        this.description = description;
         this.taskList = taskList;
+    }
+
+    public Lesson(String name) {
+        this.name = name;
     }
 }

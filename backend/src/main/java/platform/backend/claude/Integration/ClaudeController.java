@@ -3,7 +3,13 @@ package platform.backend.claude.Integration;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import platform.backend.claude.functions.definition.AntonymExercise;
+import platform.backend.claude.functions.definition.ClaudeExerciseResponse;
 import platform.backend.claude.functions.definition.ExerciseDefinition;
+import platform.backend.claude.functions.definition.PastSPastCExercise;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @RestController
 @RequestMapping("api/v1/claude")
@@ -15,50 +21,32 @@ public class ClaudeController {
     }
 
     @PostMapping
-    public ResponseEntity<String> getClaudeResponse(@RequestBody ClaudeRequest claudeRequest) {
-        ExerciseDefinition exerciseDefinition = new ExerciseDefinition(
-                " Generates exercises for english lessons on the given topic. \n" +
-                        "        This is translate exercise. Generate polish sentences to the {{CONTENT}} and sentence english words to the {{ANSWER}}.\n" +
-                        "        In the given structure:\n" +
-                        "        <result>\n" +
-                        "            <exercises>\n" +
-                        "                <exercise>\n" +
-                        "                    <content>{{CONTENT}}</content>\n" +
-                        "                    <answer>{{ANSWER}}</answer>\n" +
-                        "                </exercise>\n" +
-                        "            </exercises>\n" +
-                        "        </result>\n" +
-                        "        In the <exercises></exercises> tag returns a list of objects wih 2 fields CONTENT and ANSWER. Create exercise that way\n" +
-                        "        where all answers are different. Please take into account level of language that is given as\n" +
-                        "        a parameter.\n" +
-                        "        - content: string, Only one sentence of exercise - answer: string, a correct answer for the exercise",
-                "nature spin'offs",
-                "C2");
+    public ResponseEntity<String> getClaudeResponse() {
+        ExerciseDefinition anatomyExercise = new AntonymExercise("avengers");
 
-        System.out.println(exerciseDefinition.getSystemPrompt());
-        System.out.println(exerciseDefinition.getUserPrompt());
-//        ClaudeMessageResponse response = claudeService.getClaudeMessageResponse(exerciseDefinition.getSystemPrompt(), exerciseDefinition.getUserPrompt());
+//        System.out.println(anatomyExercise.getSystemPrompt());
+//        System.out.println(anatomyExercise.getUserPrompt());
+
+//        ExerciseDefinition pastSimplePastContinuousExercise = new PastSPastCExercise("past simple past Continuous", "B2");
+//        System.out.println(pastSimplePastContinuousExercise.getSystemPrompt());
+//        System.out.println(pastSimplePastContinuousExercise.getUserPrompt());
+
+            String[]contents= "powerful, strong, brave, courageous, fearless, mighty, invincible, unstoppable, heroic, valiant".split(",");
+            String[]answers= "weak, cowardly, vulnerable, stoppable, villainous, timid".split(",");
+
+        List<ClaudeExerciseResponse> claudeExerciseResponsesList = new ArrayList<>();
+        System.out.println("contents: " + contents.length);
+        System.out.println("answers: " + answers.length);
+        for(int i = 0; i < contents.length; i++){
+            System.out.println("Content: " + contents[i]);
+            System.out.println(i);
+            if( i <= (answers.length-1))
+                claudeExerciseResponsesList.add(new ClaudeExerciseResponse(contents[i], answers[i]));
+        }
+
+//        ClaudeMessageResponse response = claudeService.getClaudeMessageResponse(anatomyExercise.getSystemPrompt(), anatomyExercise.getUserPrompt());
 //        System.out.println(response);
-        System.out.println(ExerciseDefinition.getResponseData("<result>\n" +
-                "    <exercises>\n" +
-                "        <exercise>\n" +
-                "            <content>NASA technologia opracowana dla programów kosmicznych znalazła wiele zastosowań w życiu codziennym, na przykład {{BLANK}} używane w materacach pochodzą z technologii siedzeń wahadłowców.</content>\n" +
-                "            <answer>memory foam</answer>\n" +
-                "        </exercise>\n" +
-                "        <exercise>\n" +
-                "            <content>Okulary {{BLANK}} blokujące odblaski światła zostały pierwotnie opracowane dla astronautów.</content>\n" +
-                "            <answer>polarized</answer>\n" +
-                "        </exercise>\n" +
-                "        <exercise>\n" +
-                "            <content>Bezprzewodowe {{BLANK}} do pomiaru temperatury ciała u niemowląt wywodzą się z czujników używanych przez NASA do monitorowania temperatury astronautów.</content>\n" +
-                "            <answer>thermometers</answer>\n" +
-                "        </exercise>\n" +
-                "        <exercise>\n" +
-                "            <content>Technologia filtrowania wody NASA przyczyniła się do rozwoju przenośnych systemów {{BLANK}} wody pitnej.</content>\n" +
-                "            <answer>purification</answer>\n" +
-                "        </exercise>\n" +
-                "    </exercises>\n" +
-                "</result>"));
+
         return new ResponseEntity<>("response", HttpStatus.OK);
     }
 

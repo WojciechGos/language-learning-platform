@@ -3,10 +3,7 @@ package platform.backend.Work.Lesson;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -23,7 +20,14 @@ public class LessonController {
         return new ResponseEntity<>(lessons, HttpStatus.OK);
     }
 
-    @PostMapping ResponseEntity<Lesson> addLesson(Lesson lesson) {
+    @GetMapping("/{id}")
+    public ResponseEntity<Lesson> getLessonById(@PathVariable("id") Long id) {
+        Lesson lesson = lessonService.getLessonById(id);
+        return new ResponseEntity<>(lesson, HttpStatus.OK);
+    }
+
+    @PostMapping
+    public ResponseEntity<Lesson> addLesson(@RequestBody LessonRequest lesson) {
         Lesson newLesson = lessonService.addLesson(lesson);
         return new ResponseEntity<>(newLesson, HttpStatus.CREATED);
     }
