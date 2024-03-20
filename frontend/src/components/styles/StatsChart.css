@@ -1,0 +1,19 @@
+.stats-big-chart {
+  width: 50vw;
+  margin: 20px auto;
+  padding: 5px;
+  background-color: #ffbe76;
+  border-radius: 30px;
+}
+
+.stats-small-chart {
+  width: 15vw;
+  margin: 20px;
+  padding: 5px;
+  background-color: #ffbe76;
+  border-radius: 30px;
+}
+
+.stats-text {
+  padding: 10px;
+}

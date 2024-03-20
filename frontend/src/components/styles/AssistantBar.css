@@ -1,0 +1,22 @@
+.bar-tile {
+  width: 70vw;
+  height: 12vh;
+  padding: 5px;
+  background-color: #ffbe76;
+  border-radius: 30px;
+}
+
+.input-text-assistant {
+  padding: 15px;
+  width: 60vw;
+  margin: 20px;
+  border-radius: 30px;
+  background-color: #f6f2ff;
+  color: black;
+  font-size: 16px;
+  border: none;
+}
+
+.bigText {
+  font-size: 1.6em;
+}
