@@ -1,0 +1,37 @@
+.form-tile {
+  width: 70vw;
+  height: 12vh;
+  margin: 20px;
+  padding: 5px;
+  background-color: #ffbe76;
+  border-radius: 30px;
+}
+
+.input-text {
+  padding: 15px;
+  width: 30vw;
+  margin: 20px;
+  border-radius: 30px;
+  background-color: #f6f2ff;
+  color: black;
+  font-size: 16px;
+  border: none;
+}
+
+.bigText {
+  font-size: 1.6em;
+}
+
+.button-send {
+  padding: 40px;
+  padding-left: 80px;
+  padding-right: 80px;
+  border-radius: 30px;
+  background-color: #e15f41;
+  border: none;
+  font-size: 24px;
+}
+
+.button-send:hover {
+  cursor: pointer;
+}
