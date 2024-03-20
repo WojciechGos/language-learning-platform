@@ -31,6 +31,12 @@ public class LessonController {
         Lesson newLesson = lessonService.addLesson(lesson);
         return new ResponseEntity<>(newLesson, HttpStatus.CREATED);
     }
+
+    @PostMapping("/submit/{id}")
+    public ResponseEntity<Lesson> addFeedback(@PathVariable("id") Long id) {
+        Lesson feedback = lessonService.submitLesson(id);
+        return new ResponseEntity<>(feedback, HttpStatus.OK);
+    }
 }
 
 

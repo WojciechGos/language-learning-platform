@@ -30,6 +30,9 @@ public class Lesson {
     @OneToMany
     private List<Task> taskList;
     private int totalPoints = 0;
+    private int maxPoints = 0;
+
+    @Column(columnDefinition = "TEXT")
     private String feedback;
 
     public Lesson(String name, String description, List<Task> taskList) {
@@ -39,5 +42,21 @@ public class Lesson {
 
     public Lesson(String name) {
         this.name = name;
+    }
+
+    public Lesson(String name, List<Task> taskList, int totalPoints, int maxPoints) {
+        this.name = name;
+        this.taskList = taskList;
+        this.totalPoints = totalPoints;
+        this.maxPoints = maxPoints;
+    }
+
+    @Override
+    public String toString() {
+        return "<lesson>" +
+                "<taskList>" + taskList + "</taskList>" +
+                "<totalPoints>" + totalPoints + "</totalPoints>" +
+                "<maxPoints>" + maxPoints + "</maxPoints>" +
+                "</lesson>";
     }
 }

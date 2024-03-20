@@ -22,15 +22,11 @@ public class Exercise {
             generator = "exercise_sequence"
     )
     private Long id;
-    private int points = 1;
+    private int points = 0;
     private String content;
     private String userAnswer;
     private String correctAnswer;
 
-
-//    @ManyToOne
-//    @JoinColumn(name = "task_id")
-//    private Task task;
 
     public Exercise(String content, String correctAnswer) {
         this.content = content;
@@ -38,4 +34,13 @@ public class Exercise {
 
     }
 
+    @Override
+    public String toString() {
+        return "<exercise>" +
+                "<points>" + points + "</points>" +
+                "<content>" + content + "</content>" +
+                "<userAnswer>" + userAnswer + "</userAnswer>" +
+                "<correctAnswer>'" + correctAnswer + "</correctAnswer>" +
+                "</exercise>";
+    }
 }

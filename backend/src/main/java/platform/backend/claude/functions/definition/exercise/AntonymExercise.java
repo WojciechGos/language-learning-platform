@@ -1,4 +1,4 @@
-package platform.backend.claude.functions.definition;
+package platform.backend.claude.functions.definition.exercise;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -9,7 +9,6 @@ import platform.backend.claude.functions.skeleton.Parameter;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
-import java.io.ByteArrayInputStream;
 import java.util.ArrayList;
 import java.util.List;
 

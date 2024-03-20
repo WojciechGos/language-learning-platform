@@ -13,7 +13,7 @@ public class ExerciseController {
 
     private final ExerciseService exerciseService;
 
-    @PatchMapping("{id}")
+    @PutMapping("/{id}")
     public ResponseEntity<Exercise> updateExercise(@RequestBody ExerciseRequest exerciseRequest, @PathVariable("id") Long exerciseId) {
         Exercise exercise = exerciseService.updateExercise(exerciseRequest, exerciseId);
         return new ResponseEntity<>(exercise, HttpStatus.OK);
