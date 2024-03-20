@@ -7,6 +7,7 @@ import Stats from "./pages/Stats";
 import Activities from "./pages/Activities";
 import Assistant from "./pages/Assistant";
 import Tutor from "./pages/Tutor";
+import Lesson from "./pages/Lesson";
 
 const router = createBrowserRouter([
   {
@@ -37,6 +38,10 @@ const router = createBrowserRouter([
   {
     path: "/tutor",
     element: <Tutor />,
+  },
+  {
+    path: "/classes/:classId",
+    element: <Lesson />,
   },
 ]);
 

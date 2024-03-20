@@ -1,6 +1,7 @@
 import React from "react";
 import MessageBar from "./MessageBar";
 import "./styles/MessageBoard.css";
+import { NavLink } from "react-router-dom";
 
 interface MessageBoardProps {
   name: string;
@@ -13,7 +14,11 @@ const MessageBoard: React.FC<MessageBoardProps> = ({ name, messages }) => {
       <h2>{name}</h2>
       <div className="message-list">
         {messages.map((el) => {
-          return <MessageBar key={el} message={el}></MessageBar>;
+          return (
+            <NavLink key={el} to={`/classes/${el}`} className="no-style">
+              <MessageBar key={el} message={el}></MessageBar>
+            </NavLink>
+          );
         })}
       </div>
     </div>

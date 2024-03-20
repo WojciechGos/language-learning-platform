@@ -9,3 +9,8 @@
 .message-list {
   padding: 10px;
 }
+
+.no-style {
+  text-decoration: none;
+  color: #000;
+}
