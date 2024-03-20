@@ -60,6 +60,17 @@ public class TaskService {
             System.out.println(claudeMessageResponse);
             claudeExerciseResponsesList = scatterExercise.getResponseData(claudeMessageResponse.content().get(0).text());
         }
+        else if(request.type().equals("prefix suffix")){
+            ExerciseDefinition exercise = new PrefixSuffixExercise(request.topic());
+            description = "form words from scattered letters.";
+            ClaudeMessageResponse claudeMessageResponse = claudeService.getClaudeMessageResponse(
+                    exercise.getSystemPrompt(),
+                    exercise.getUserPrompt()
+            );
+
+            System.out.println(claudeMessageResponse);
+            claudeExerciseResponsesList = exercise.getResponseData(claudeMessageResponse.content().get(0).text());
+        }
 
         List<Exercise> exerciseList = exerciseService.getExerciseList(claudeExerciseResponsesList);
         Task task = taskRepository.save(new Task(description, request.type(), exerciseList));
