@@ -14,10 +14,14 @@ public class TaskController {
     @PostMapping("/generate")
     public ResponseEntity<Task> generateTask(@RequestBody TaskRequest request){
         System.out.println(request.topic() + " " + request.type());
-
         return ResponseEntity.ok(taskService.generateTask(request));
     }
 
+    @PostMapping("/generate/audio")
+    public ResponseEntity<Task> generateAudioTask(@RequestBody TaskRequest request){
+        System.out.println(request.topic() + " " + request.type());
+        return ResponseEntity.ok(taskService.generateAudioTask(request));
+    }
 
 
 }
