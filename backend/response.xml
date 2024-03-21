@@ -1,69 +1,33 @@
-<lesson>
-    <taskList>[<task>
-            <type>grammar</type>
-            <description>Join these pairs of sentences into single sentences, using a present
-        participle phrase (verb+ing). Some sentences require the additional word in brackets to be
-        used.</description>
-            <excerciseList>[
-            <exercise>
-                <points>0</points>
-                <content>Inflatable 35 cm wheels provide a comfortable ride. They allow drivers to
-        travel across rough, open ground.</content>
-                <userAnswer>null</userAnswer>
-                <correctAnswer>'Inflatable 35 cm wheels provide a comfortable ride, allowing drivers
-        to travel across rough, open ground.</correctAnswer>
-            </exercise>,
-            <exercise>
-                <points>0</points>
-                <content>The operating range of 60 km allows drivers to return. They do not need to
-        recharge the batteries. (without)</content>
-                <userAnswer>null</userAnswer>
-                <correctAnswer>'The operating range of 60 km allows drivers to return, without
-        needing to recharge the batteries.</correctAnswer>
-            </exercise>]
-            </exerciseList>
-        </task>, <task>
-            <type>past simple past continuous</type>
-            <description>Write the word in parentheses in the appropriate simple past or past
-        continuous tense.</description>
-            <excerciseList>[
-            <exercise>
-                <points>0</points>
-                <content>While the Avengers _____ (fight) Thanos, Iron Man _____ (try) to figure out
-        a way to defeat him once and for all.</content>
-                <userAnswer>null</userAnswer>
-                <correctAnswer>'were fighting, was trying</correctAnswer>
-            </exercise>,
-            <exercise>
-                <points>0</points>
-                <content>As Black Widow _____ (infiltrate) the enemy base, Hawkeye _____ (provide)
-        cover from a nearby rooftop.</content>
-                <userAnswer>null</userAnswer>
-                <correctAnswer>'was infiltrating, was providing</correctAnswer>
-            </exercise>,
-            <exercise>
-                <points>0</points>
-                <content>Thor _____ (summon) lightning to attack the Chitauri army while Captain
-        America _____ (lead) the ground assault.</content>
-                <userAnswer>null</userAnswer>
-                <correctAnswer>'summoned, was leading</correctAnswer>
-            </exercise>,
-            <exercise>
-                <points>0</points>
-                <content>The Hulk _____ (smash) through the alien invaders as Scarlet Witch _____
-        (use) her powers to protect civilians.</content>
-                <userAnswer>null</userAnswer>
-                <correctAnswer>'was smashing, was using</correctAnswer>
-            </exercise>,
-            <exercise>
-                <points>0</points>
-                <content>When Ant-Man _____ (shrink) down to infiltrate Ultron's systems, Vision
-        _____ (analyze) the robot's weaknesses.</content>
-                <userAnswer>null</userAnswer>
-                <correctAnswer>'shrank, was analyzing</correctAnswer>
-            </exercise>]
-            </exerciseList>
-        </task>]</taskList>
-    <totalPoints>4</totalPoints>
-    <maxPoints>7</maxPoints>
-</lesson>
+<result>
+    <exercises>
+        <exercise>
+            <content>The company did not invest in cybersecurity; hackers breached their systems</content>
+            <answer>If the company had invested in cybersecurity, hackers would not have breached
+                their systems.</answer>
+        </exercise>
+        <exercise>
+            <content>The IT team failed to perform regular data backups; critical files were lost
+                during the server crash</content>
+            <answer>If the IT team had performed regular data backups, critical files would not have
+                been lost during the server crash.</answer>
+        </exercise>
+        <exercise>
+            <content>The software developers rushed the product release; the application had
+                numerous bugs and glitches</content>
+            <answer>If the software developers had not rushed the product release, the application
+                would not have had numerous bugs and glitches.</answer>
+        </exercise>
+        <exercise>
+            <content>The company did not provide adequate training; employees struggled to use the
+                new software efficiently</content>
+            <answer>If the company had provided adequate training, employees would not have
+                struggled to use the new software efficiently.</answer>
+        </exercise>
+        <exercise>
+            <content>The project manager underestimated the complexity of the task; the team missed
+                the deadline</content>
+            <answer>If the project manager had not underestimated the complexity of the task, the
+                team would not have missed the deadline.</answer>
+        </exercise>
+    </exercises>
+</result>

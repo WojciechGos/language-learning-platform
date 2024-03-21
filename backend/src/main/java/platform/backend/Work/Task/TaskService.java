@@ -24,18 +24,11 @@ public class TaskService {
     public Task generateTask(TaskRequest request) {
         List<ClaudeExerciseResponse> claudeExerciseResponsesList = new ArrayList<>();
         String description = "";
+        ExerciseDefinition exerciseDefinition = null;
 
         if(request.type().equals("antonym")){
-            ExerciseDefinition antonymDefinition = new AntonymExercise(request.topic());
+            exerciseDefinition = new AntonymExercise(request.topic());
             description = "group related antonyms";
-
-            ClaudeMessageResponse claudeMessageResponse = claudeService.getClaudeMessageResponse(
-                    antonymDefinition.getSystemPrompt(),
-                    antonymDefinition.getUserPrompt()
-            );
-
-            System.out.println(claudeMessageResponse);
-            claudeExerciseResponsesList = antonymDefinition.getResponseData(claudeMessageResponse.content().get(0).text());
 
         }
         else if(request.type().equals("past simple past continuous")){
@@ -60,6 +53,36 @@ public class TaskService {
             System.out.println(claudeMessageResponse);
             claudeExerciseResponsesList = scatterExercise.getResponseData(claudeMessageResponse.content().get(0).text());
         }
+        else if(request.type().equals("prefix suffix")){
+            ExerciseDefinition exercise = new PrefixSuffixExercise(request.topic());
+            description = "form words from scattered letters.";
+            ClaudeMessageResponse claudeMessageResponse = claudeService.getClaudeMessageResponse(
+                    exercise.getSystemPrompt(),
+                    exercise.getUserPrompt()
+            );
+
+            System.out.println(claudeMessageResponse);
+            claudeExerciseResponsesList = exercise.getResponseData(claudeMessageResponse.content().get(0).text());
+        }
+        else if(request.type().equals("third conditional")){
+            ExerciseDefinition exercise = new ThirdConditionalExercise(request.topic());
+            description = "form words from scattered letters.";
+            ClaudeMessageResponse claudeMessageResponse = claudeService.getClaudeMessageResponse(
+                    exercise.getSystemPrompt(),
+                    exercise.getUserPrompt()
+            );
+
+            System.out.println(claudeMessageResponse);
+            claudeExerciseResponsesList = exercise.getResponseData(claudeMessageResponse.content().get(0).text());
+        }
+        
+        ClaudeMessageResponse claudeMessageResponse = claudeService.getClaudeMessageResponse(
+                exerciseDefinition.getSystemPrompt(),
+                exerciseDefinition.getUserPrompt()
+        );
+
+        System.out.println(claudeMessageResponse);
+        claudeExerciseResponsesList = exerciseDefinition.getResponseData(claudeMessageResponse.content().get(0).text());
 
         List<Exercise> exerciseList = exerciseService.getExerciseList(claudeExerciseResponsesList);
         Task task = taskRepository.save(new Task(description, request.type(), exerciseList));

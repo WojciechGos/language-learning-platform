@@ -13,17 +13,18 @@ import java.io.ByteArrayInputStream;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PastSPastCExercise extends ExerciseDefinition{
+public class PrefixSuffixExercise extends ExerciseDefinition{
+    public PrefixSuffixExercise(String topic) {
+        super(topic);
 
-    public PastSPastCExercise(String topic, String languageLevel) {
-        super(topic, languageLevel);
-        this.functionPrompt = new ClaudeFunctionPrompt("generate_exercise",
-                "Generates exercises for english lessons on the given topic. This is grammar\n" +
-                        "        exercise, that helps us to learn past simple and past continoues, so please give in the\n" +
-                        "        brackets next to the blank spot verb. In the given structure. In the <exercises></exercises>\n" +
-                        "        tag returns a list of objects wih 2 fields CONTENT and ANSWER. Create exercise that way\n" +
-                        "        where all answers are different. Please take into account level of language that is given as\n" +
-                        "        a parameter. \n" +
+        this.functionPrompt = new ClaudeFunctionPrompt(
+                "generate_exercise",
+                "Generates exercises for english lessons on the given topic. \n" +
+                        "        generate a task that involves adding the appropriate suffixes or prefixes to the word like:\n" +
+                        "- prefiex: inter-,  ir-, macro-, mis\n" +
+                        "- suffixes: -ship, -ist, -ness, -hood\n" +
+                        "Place word without suffix and prefix in content tag. In answer tag place word with suffix or prefix e.g.\n" +
+                        "Respond in the given structure:\n" +
                         "        <result>\n" +
                         "            <exercises>\n" +
                         "                <exercise>\n" +
@@ -32,12 +33,11 @@ public class PastSPastCExercise extends ExerciseDefinition{
                         "                </exercise>\n" +
                         "            </exercises>\n" +
                         "        </result>\n" +
-                        "        - content: string, Only one sentence of exercise with only one answer - correct_answer: string, a correct answer\n" +
-                        "        for the exercise ",
-                List.of(
-                new Parameter("topic", "string", "The main theme for exercise e.g. Nasa's spin offs, IT procedures",topic),
-                new Parameter("level", "string", "It is language level e.g. B1, B2, C2",languageLevel)
-        ));
+                        "        In the <exercises></exercises> tag returns a list of objects wih 2 fields CONTENT and ANSWER. Create exercise that way\n" +
+                        "        - content: string, one sentence with word that need prefix or suffix The ____view of the IT industry shows continued growth and innovation. The answer is macroview\n" +
+                        "        - answer: string, a single word which is a correct answer for the exercise",
+                List.of(new Parameter("topic", "string", "The main theme for exercise e.g. Nasa's spin offs, IT procedures",topic))
+        );
     }
 
     @Override
@@ -73,5 +73,4 @@ public class PastSPastCExercise extends ExerciseDefinition{
         }
         return null;
     }
-
 }
