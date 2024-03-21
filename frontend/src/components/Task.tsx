@@ -1,10 +1,11 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 import "./styles/FormScenario.css";
 
-function Task() {
+const Task: React.FC = () => {
+  const { topicValue, id } = useParams<{ topicValue: string; id: string }>();
   const [hobbyValue, setHobbyValue] = useState("");
   const [typeValue, setTypeValue] = useState("");
-  const [additionalValue, setAdditionalValue] = useState("");
 
   const handleHobbyChange = (e: any) => {
     setHobbyValue(e.target.value);
@@ -14,9 +15,44 @@ function Task() {
     setTypeValue(e.target.value);
   };
 
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch(
+          `http://localhost:8080/api/v1/tasks/generate`,
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              topic: topicValue,
+              type: "past simple past continuous",
+              lessonId: id,
+            }),
+          }
+        );
+
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+
+        const responseData = await response.json(); // Konwertuj odpowiedź na obiekt JSON
+        console.log(responseData);
+
+        // Tutaj możesz obsłużyć odpowiedź jeśli jest potrzebne
+      } catch (error) {
+        console.error("Error:", error);
+        // Tutaj możesz obsłużyć błędy sieciowe lub inne błędy
+      }
+    };
+
+    fetchData();
+  }, [topicValue, id]); // Zmiany topicValue lub id spowodują ponowne wywołanie useEffect
+
   const handleSubmit = (e: any) => {
     e.preventDefault();
-    console.log("Submitted value:", hobbyValue + typeValue + additionalValue);
+    console.log("Submitted value:", hobbyValue + typeValue);
   };
 
   return (
@@ -52,6 +88,6 @@ function Task() {
       </div>
     </form>
   );
-}
+};
 
 export default Task;

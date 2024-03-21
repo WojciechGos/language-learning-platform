@@ -1,9 +1,9 @@
 import { useState } from "react";
 import "./styles/FormScenario.css";
-//import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 function FormLesson() {
-  //const navigate = useNavigate();
+  const navigate = useNavigate();
   const [topicValue, setTopicValue] = useState("");
 
   const handleTopicChange = (e: any) => {
@@ -32,11 +32,12 @@ function FormLesson() {
         throw new Error("Network response was not ok");
       }
 
-      // Optional: You may handle successful response here if needed
+      const responseData = await response.json(); // Konwertuj odpowiedź na obiekt JSON
+      const lessonId = responseData.id; // Wyłuskaj ID z obiektu odpowiedzi
 
-      // Reset the input field after successful submission
+      // Resetuj pole input po udanym przesłaniu
       setTopicValue("");
-      //navigate("/");
+      navigate(`/lessons/${lessonId}`);
     } catch (error) {
       console.error("Error submitting lesson:", error);
     }
