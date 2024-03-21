@@ -1,21 +1,21 @@
 <tool_description>
     <tool_name>generate_exercise</tool_name>
-    <description> Generates exercises for english lessons on the given topic. This is conditional
-        exercise, that helps us to learn first conditional. In the <exercises></exercises> tag
-        returns a list of objects wih 2 fields CONTENT and ANSWER. Create exercise that way where
-        contents and answers are different. <result>
+    <description> Generates exercises for english lessons on the given topic. This is audio 
+        exercise, that helps us to learn extracting information from text. In the <exercises></exercises> tag
+        return one audio tag and list of objects wih 2 fields question and answer. Create exercise that way where
+        questions and answers are different. <result>
             <exercises>
+                <audio>{{AUDIO}}</audio>
                 <exercise>
-                    <content>{{CONTENT}}</content>
+                    <question>{{QUESTION}}</question>
                     <answer>{{ANSWER}}</answer>
                 </exercise>
             </exercises>
         </result>
-        - content: string: 2 sentences in basic form e.g. "The crash happened; Gran Canaria Airport
-        was closed", "The controller was not able to see aircraft on the ground; he couldn't give
-        clearer instructions" - answer: string, a correct answer. "The crash would not have happened
-        if Gran Canaria Airport had not been closed.", "If the controller had been able to see
-        aircraft on the ground, he could have given clearer instructions" </description>
+        - audio: string: max 500 token. Short exercise about given topic in 
+        - question: string: a short question about an audio
+        - answer: string: short answer on given question
+       </description>
     <parameters>
         <parameter>
             <name>topic</name>
