@@ -28,10 +28,16 @@ interface Answer {
   [index: number]: { id: number; userAnswer: string };
 }
 
+const LoadingAnimation = () => (
+  <div className="loading-animation"></div> // Komponent animacji kółeczka
+);
+
 const Task: React.FC<{ taskItem: string | undefined }> = ({ taskItem }) => {
   //Sconst { topicValue, id } = useParams<{ topicValue: string; id: string }>();
 
   const [answers, setAnswers] = useState<Answer>({});
+  const [isButtonDisabled, setIsButtonDisabled] = useState(false);
+
   const [dataValue, setDataValue] = useState({
     taskList: [
       {
@@ -89,6 +95,7 @@ const Task: React.FC<{ taskItem: string | undefined }> = ({ taskItem }) => {
   const handleSubmit = (e: any) => {
     e.preventDefault();
     console.log("Submitted value: ", answers);
+    setIsButtonDisabled(true);
     const fetchData = async () => {
       const response = await fetch(
         `http://localhost:8080/api/v1/lessons/submit/${taskItem}`,
@@ -100,6 +107,7 @@ const Task: React.FC<{ taskItem: string | undefined }> = ({ taskItem }) => {
         }
       );
       const data = await response.json();
+      setIsButtonDisabled(false);
       setDataValue(data);
     };
 
@@ -152,7 +160,9 @@ const Task: React.FC<{ taskItem: string | undefined }> = ({ taskItem }) => {
                 {elem.excerciseList.map((el, subIndex) => {
                   return (
                     <div key={subIndex}>
-                      <p>{el.content}</p>
+                      <p style={{ paddingLeft: "20px", paddingRight: "20px" }}>
+                        {el.content}
+                      </p>
                       <input
                         key={el.id}
                         type="text"
@@ -169,11 +179,28 @@ const Task: React.FC<{ taskItem: string | undefined }> = ({ taskItem }) => {
           );
         })}
 
-        <button type="submit" className="button-send">
+        <button
+          type="submit"
+          className="button-send"
+          disabled={isButtonDisabled}
+        >
           GENERUJ!
         </button>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            padding: "15px",
+          }}
+        >
+          {isButtonDisabled && <LoadingAnimation />}
+        </div>
 
-        <div className="task-tile">
+        <div
+          className="task-tile"
+          style={{ paddingLeft: "20px", paddingRight: "20px" }}
+        >
           <label className="bigText">{dataValue.feedback || ""}</label>
         </div>
       </form>
