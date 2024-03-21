@@ -2,7 +2,13 @@
   width: 50vw;
   margin: 20px auto;
   padding: 5px;
-  background-color: #ffbe76;
+  background-color: #faa499;
+  background-image: linear-gradient(
+    319deg,
+    #faa499 0%,
+    #f7dd85 37%,
+    #ffc55c 100%
+  );
   border-radius: 30px;
 }
 
