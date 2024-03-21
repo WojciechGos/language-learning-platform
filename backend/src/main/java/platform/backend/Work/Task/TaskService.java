@@ -8,6 +8,9 @@ import platform.backend.Work.Lesson.LessonService;
 import platform.backend.claude.Integration.ClaudeMessageResponse;
 import platform.backend.claude.Integration.ClaudeService;
 import platform.backend.claude.functions.definition.exercise.*;
+import platform.backend.claude.functions.definition.exercise.audio.AudioExercise;
+import platform.backend.claude.functions.definition.exercise.audio.ClaudeAudioExerciseResponse;
+import platform.backend.ibm.IBMService;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,6 +23,7 @@ public class TaskService {
     private final ClaudeService claudeService;
     private final ExerciseService exerciseService;
     private final LessonService lessonService;
+    private final IBMService ibmService;
 
     public Task generateTask(TaskRequest request) {
         List<ClaudeExerciseResponse> claudeExerciseResponsesList = new ArrayList<>();
@@ -56,7 +60,6 @@ public class TaskService {
             exerciseDefinition = new FirstConditionalExercise(request.topic());
             description = "Rewrite these sentences, using first conditional.";
         }
-
         else{
             throw new IllegalStateException("Invalid exercise type");
         }
@@ -72,6 +75,41 @@ public class TaskService {
 
         List<Exercise> exerciseList = exerciseService.getExerciseList(claudeExerciseResponsesList);
         Task task = taskRepository.save(new Task(description, request.type(), exerciseList));
+
+        lessonService.addTaskToLesson(task, request.lessonId());
+        return task;
+    }
+
+    public Task generateAudioTask(TaskRequest request) {
+        String description = "Listen to the audio and answer the question";
+        ExerciseDefinition exerciseDefinition = new AudioExercise(request.topic());
+
+        ClaudeMessageResponse claudeMessageResponse = claudeService.getClaudeMessageResponse(
+                exerciseDefinition.getSystemPrompt(),
+                exerciseDefinition.getUserPrompt()
+        );
+
+        System.out.println(claudeMessageResponse);
+        System.out.println(exerciseDefinition.getSystemPrompt());
+        ClaudeAudioExerciseResponse claudeExerciseResponsesList = ((AudioExercise) exerciseDefinition).getAudioResponse(claudeMessageResponse.content().get(0).text());
+
+
+        String audioText = claudeExerciseResponsesList.audio();
+
+        byte[] audio = ibmService.convertTextToSpeech(audioText);
+
+
+        List<ClaudeExerciseResponse> exerciseResponseList = claudeExerciseResponsesList.claudeExerciseResponseList();
+
+
+        List<Exercise> exerciseList = exerciseService.getExerciseList(exerciseResponseList);
+        Task task = new Task(description + "\n" +
+                claudeExerciseResponsesList.audio(),
+                "audio", exerciseList);
+
+        task.setAudio(audio);
+
+        taskRepository.save(task);
 
         lessonService.addTaskToLesson(task, request.lessonId());
         return task;

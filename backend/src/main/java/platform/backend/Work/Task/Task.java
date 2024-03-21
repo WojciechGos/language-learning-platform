@@ -27,10 +27,13 @@ public class Task {
             generator = "task_sequence"
     )
     private Long id;
+    @Column(columnDefinition = "TEXT")
     private String description;
     private String type;
     @OneToMany(cascade = CascadeType.ALL)
     private List<Exercise> excerciseList;
+    @Lob
+    private byte[] audio;
 
 
     public Task(String description, List<Exercise> excerciseList) {
