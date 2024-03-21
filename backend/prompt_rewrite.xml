@@ -20,5 +20,4 @@
 <correct_answer>{{CORRECT_ANSWER}}</correct_answer>
 </result>
 
-        In the result, don't include first message with "Here is the result of...", generate only the exercise.
-
+        In the result, don't include first message with "Here is the result of...", generate only the <result>.

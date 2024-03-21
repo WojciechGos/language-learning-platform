@@ -1,28 +1,33 @@
-Here is the result of invoking generate_exercise with the topic "information technology":
-
 <result>
     <exercises>
         <exercise>
-            <content>The company hired a computer special{{ANSWER}} to manage their IT
-                infrastructure.</content>
-            <answer>specialist</answer>
+            <content>The company did not invest in cybersecurity; hackers breached their systems</content>
+            <answer>If the company had invested in cybersecurity, hackers would not have breached
+                their systems.</answer>
         </exercise>
         <exercise>
-            <content>The {{ANSWER}} between the two computer systems allowed them to share data
-                seamlessly.</content>
-            <answer>interoperability</answer>
+            <content>The IT team failed to perform regular data backups; critical files were lost
+                during the server crash</content>
+            <answer>If the IT team had performed regular data backups, critical files would not have
+                been lost during the server crash.</answer>
         </exercise>
         <exercise>
-            <content>The IT manager was fired for his {{ANSWER}}management of the network security.</content>
-            <answer>mismanagement</answer>
+            <content>The software developers rushed the product release; the application had
+                numerous bugs and glitches</content>
+            <answer>If the software developers had not rushed the product release, the application
+                would not have had numerous bugs and glitches.</answer>
         </exercise>
         <exercise>
-            <content>The {{ANSWER}} of the tech company's founders was well known in Silicon Valley.</content>
-            <answer>partnership</answer>
+            <content>The company did not provide adequate training; employees struggled to use the
+                new software efficiently</content>
+            <answer>If the company had provided adequate training, employees would not have
+                struggled to use the new software efficiently.</answer>
         </exercise>
         <exercise>
-            <content>The {{ANSWER}} view of the company's IT systems helped identify inefficiencies.</content>
-            <answer>macroscopic</answer>
+            <content>The project manager underestimated the complexity of the task; the team missed
+                the deadline</content>
+            <answer>If the project manager had not underestimated the complexity of the task, the
+                team would not have missed the deadline.</answer>
         </exercise>
     </exercises>
 </result>

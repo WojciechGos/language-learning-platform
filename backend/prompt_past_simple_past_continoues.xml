@@ -1,13 +1,11 @@
-Follow intstructions and answer only using given and defined xml tags.
+
 
 <tool_description>
     <tool_name>generate_exercise</tool_name>
-    <description> Generates exercises for english lessons on the given topic. This is grammar
-        exercise, that helps us to learn past simple and past continoues, so please give in the
-        brackets next to the blank spot verb. In the given structure. In the <exercises></exercises>
-        tag returns a list of objects wih 2 fields CONTENT and ANSWER. Create exercise that way
-        where all answers are different. Please take into account level of language that is given as
-        a parameter. 
+    <description> Generates exercises for english lessons on the given topic. This is conditional
+        exercise, that helps us to learn third conditional. 
+        In the <exercises></exercises> tag returns a list of objects wih 2 fields CONTENT and ANSWER. Create exercise that way
+        where contents and answers are different. 
         <result>
             <exercises>
                 <exercise>
@@ -16,21 +14,18 @@ Follow intstructions and answer only using given and defined xml tags.
                 </exercise>
             </exercises>
         </result>
-        - content: string, Only one sentence of exercise - correct_answer: string, a correct answer
-        for the exercise </description>
+        - content: string: 2 sentences in basic form e.g. "The crash happened; Gran Canaria Airport was closed", "The controller was not able to see aircraft on the ground; he couldn't give clearer instructions"
+        - answer: string, a correct answer. "The crash would not have happened if Gran Canaria Airport had not been closed.", "If the controller had been able to see aircraft on the ground, he could have given clearer instructions"
+     </description>
     <parameters>
         <parameter>
             <name>topic</name>
             <type>string</type>
             <description>The main theme for exercise e.g. Nasa's spin offs, IT procedures</description>
         </parameter>
-        <parameter>
-            <name>level</name>
-            <type>string</type>
-            <description>It is language level e.g. B1, B2, C2</description>
-        </parameter>
     </parameters>
 </tool_description>
+In the result, don't include first message with "Here is the result of...", generate only the result tag.
 
 
 invoke generate_exercise
@@ -38,42 +33,8 @@ invoke generate_exercise
     <invoke>
         <tool_name>generate_exercise</tool_name>
         <parameters>
-            <param1>nasa's spin offs</param1>
-            <param2>B2</param2>
+            <param1>consulting</param1>
         </parameters>
     </invoke>
 
 </function_calls>
-
-
-Here is the result of invoking generate_exercise with the given parameters:
-
-<result>
-    <exercises>
-        <exercise>
-            <content>NASA _____ (develop) many technologies that _____ (find) their way into
-                everyday life while they _____ (work) on space missions.</content>
-            <answer>developed, found, were working</answer>
-        </exercise>
-        <exercise>
-            <content>While NASA scientists _____ (try) to create a material to cushion aircraft
-                seats, they _____ (invent) memory foam.</content>
-            <answer>were trying, invented</answer>
-        </exercise>
-        <exercise>
-            <content>Astronauts _____ (need) a way to filter water in space, so NASA _____ (create)
-                a water purification system that _____ (become) widely used.</content>
-            <answer>needed, created, became</answer>
-        </exercise>
-        <exercise>
-            <content>NASA _____ (look) for a way to detect hazardous gases when they _____ (develop)
-                a smoke detector that _____ (be) more sensitive than commercial units.</content>
-            <answer>was looking, developed, was</answer>
-        </exercise>
-        <exercise>
-            <content>While NASA _____ (work) on the Hubble Space Telescope, they _____ (create)
-                image processing technology that _____ (lead) to advancements in medical imaging.</content>
-            <answer>was working, created, led</answer>
-        </exercise>
-    </exercises>
-</result>
