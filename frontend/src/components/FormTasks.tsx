@@ -49,22 +49,12 @@ const FormTasks: React.FC = () => {
     fetchData();
   }, []); // Zmiany topicValue lub id spowodują ponowne wykonanie efektu
 
-  const handleSubmit = (e: any) => {
-    e.preventDefault();
-    console.log("Submitted value:");
-  };
-
   return (
     <>
       <Task taskItem={lessonId} />
       {/* <Task />
       <Task />
       <Task /> */}
-      <form onSubmit={handleSubmit}>
-        <button type="submit" className="button-send">
-          GENERUJ!
-        </button>
-      </form>
     </>
   );
 };
