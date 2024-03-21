@@ -34,8 +34,76 @@ function FormLesson() {
 
       const responseData = await response.json(); // Konwertuj odpowiedź na obiekt JSON
       const lessonId = responseData.id; // Wyłuskaj ID z obiektu odpowiedzi
+      console.log(lessonId);
 
-      // Resetuj pole input po udanym przesłaniu
+      const response2 = await fetch(
+        `http://localhost:8080/api/v1/tasks/generate`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            topic: topicValue,
+            type: "past simple past continuous",
+            lessonId,
+          }),
+        }
+      );
+
+      const response3 = await fetch(
+        `http://localhost:8080/api/v1/tasks/generate`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            topic: topicValue,
+            type: "antonym",
+            lessonId,
+          }),
+        }
+      );
+
+      const response4 = await fetch(
+        `http://localhost:8080/api/v1/tasks/generate`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            topic: topicValue,
+            type: "scatter",
+            lessonId,
+          }),
+        }
+      );
+
+      const response5 = await fetch(
+        `http://localhost:8080/api/v1/tasks/generate`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            topic: topicValue,
+            type: "third conditional",
+            lessonId,
+          }),
+        }
+      );
+
+      const responseData2 = await response2.json(); // Konwertuj odpowiedź na obiekt JSON
+      const responseData3 = await response3.json(); // Konwertuj odpowiedź na obiekt JSON
+      const responseData4 = await response4.json(); // Konwertuj odpowiedź na obiekt JSON
+      const responseData5 = await response5.json(); // Konwertuj odpowiedź na obiekt JSON
+      console.log(
+        responseData2 + responseData3 + responseData4 + responseData5
+      );
+
       setTopicValue("");
       navigate(`/lessons/${lessonId}`);
     } catch (error) {
