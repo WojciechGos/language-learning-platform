@@ -41,13 +41,23 @@ public class TaskService {
         }
         else if(request.type().equals("prefix suffix")){
             exerciseDefinition = new PrefixSuffixExercise(request.topic());
-            description = "form words from scattered letters.";
+            description = "Add appriopriate prefix or suffix to the word.";
 
         }
         else if(request.type().equals("third conditional")){
             exerciseDefinition = new ThirdConditionalExercise(request.topic());
-            description = "form words from scattered letters.";
-        }else{
+            description = "Rewrite these sentences, using third conditional.";
+        }
+        else if(request.type().equals("second conditional")){
+            exerciseDefinition = new SecondConditionalExercise(request.topic());
+            description = "Rewrite these sentences, using second conditional.";
+        }
+        else if(request.type().equals("first conditional")){
+            exerciseDefinition = new FirstConditionalExercise(request.topic());
+            description = "Rewrite these sentences, using first conditional.";
+        }
+
+        else{
             throw new IllegalStateException("Invalid exercise type");
         }
         
@@ -57,6 +67,7 @@ public class TaskService {
         );
 
         System.out.println(claudeMessageResponse);
+        System.out.println(exerciseDefinition.getSystemPrompt());
         claudeExerciseResponsesList = exerciseDefinition.getResponseData(claudeMessageResponse.content().get(0).text());
 
         List<Exercise> exerciseList = exerciseService.getExerciseList(claudeExerciseResponsesList);
@@ -64,23 +75,6 @@ public class TaskService {
 
         lessonService.addTaskToLesson(task, request.lessonId());
         return task;
-    }
-    public List<Task> getTasks() {
-        return taskRepository.findAll();
-    }
-
-    public Task addTask(Task task) {
-        return taskRepository.save(task);
-    }
-
-    public Task getTask(Long id) {
-        return taskRepository.findById(id).orElseThrow(() -> new IllegalStateException("Task with id " + id + " does not exist"));
-    }
-
-
-
-    public void deleteTask(Long id) {
-        taskRepository.deleteById(id);
     }
 
 }
