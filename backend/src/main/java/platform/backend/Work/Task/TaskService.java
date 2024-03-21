@@ -31,49 +31,24 @@ public class TaskService {
             description = "group related antonyms";
 
         }
-        else if(request.type().equals("past simple past continuous")){
-            ExerciseDefinition pastSimplePastContinuousExercise = new PastSPastCExercise(request.topic(), "B2");
+        else if(request.type().equals("past simple past continuous")) {
+            exerciseDefinition = new PastSPastCExercise(request.topic(), "B2");
             description = "Write the word in parentheses in the appropriate simple past or past continuous tense.";
-            ClaudeMessageResponse claudeMessageResponse = claudeService.getClaudeMessageResponse(
-                    pastSimplePastContinuousExercise.getSystemPrompt(),
-                    pastSimplePastContinuousExercise.getUserPrompt()
-            );
-
-            System.out.println(claudeMessageResponse);
-            claudeExerciseResponsesList = pastSimplePastContinuousExercise.getResponseData(claudeMessageResponse.content().get(0).text());
         }
-        else if(request.type().equals("scatter")){
-            ExerciseDefinition scatterExercise = new ScatterExercise(request.topic());
+        else if(request.type().equals("scatter")) {
+            exerciseDefinition = new ScatterExercise(request.topic());
             description = "form words from scattered letters.";
-            ClaudeMessageResponse claudeMessageResponse = claudeService.getClaudeMessageResponse(
-                    scatterExercise.getSystemPrompt(),
-                    scatterExercise.getUserPrompt()
-            );
-
-            System.out.println(claudeMessageResponse);
-            claudeExerciseResponsesList = scatterExercise.getResponseData(claudeMessageResponse.content().get(0).text());
         }
         else if(request.type().equals("prefix suffix")){
-            ExerciseDefinition exercise = new PrefixSuffixExercise(request.topic());
+            exerciseDefinition = new PrefixSuffixExercise(request.topic());
             description = "form words from scattered letters.";
-            ClaudeMessageResponse claudeMessageResponse = claudeService.getClaudeMessageResponse(
-                    exercise.getSystemPrompt(),
-                    exercise.getUserPrompt()
-            );
 
-            System.out.println(claudeMessageResponse);
-            claudeExerciseResponsesList = exercise.getResponseData(claudeMessageResponse.content().get(0).text());
         }
         else if(request.type().equals("third conditional")){
-            ExerciseDefinition exercise = new ThirdConditionalExercise(request.topic());
+            exerciseDefinition = new ThirdConditionalExercise(request.topic());
             description = "form words from scattered letters.";
-            ClaudeMessageResponse claudeMessageResponse = claudeService.getClaudeMessageResponse(
-                    exercise.getSystemPrompt(),
-                    exercise.getUserPrompt()
-            );
-
-            System.out.println(claudeMessageResponse);
-            claudeExerciseResponsesList = exercise.getResponseData(claudeMessageResponse.content().get(0).text());
+        }else{
+            throw new IllegalStateException("Invalid exercise type");
         }
         
         ClaudeMessageResponse claudeMessageResponse = claudeService.getClaudeMessageResponse(
